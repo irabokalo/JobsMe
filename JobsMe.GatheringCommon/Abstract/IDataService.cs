@@ -7,6 +7,6 @@ namespace JobsMe.GatheringCommon.Abstract
 {
     public interface IDataService
     {
-        Task<string> GetData(string url);
+        Task<string> GetDataAsync(string url);
     }
 }

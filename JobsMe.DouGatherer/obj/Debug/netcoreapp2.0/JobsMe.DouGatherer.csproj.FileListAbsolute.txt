@@ -1,0 +1,13 @@
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\bin\Debug\netcoreapp2.0\JobsMe.DouGatherer.deps.json
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\bin\Debug\netcoreapp2.0\JobsMe.DouGatherer.runtimeconfig.json
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\bin\Debug\netcoreapp2.0\JobsMe.DouGatherer.runtimeconfig.dev.json
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\bin\Debug\netcoreapp2.0\JobsMe.DouGatherer.dll
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\bin\Debug\netcoreapp2.0\JobsMe.DouGatherer.pdb
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\bin\Debug\netcoreapp2.0\JobsMe.GatheringCommon.dll
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\bin\Debug\netcoreapp2.0\JobsMe.GatheringCommon.pdb
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\obj\Debug\netcoreapp2.0\JobsMe.DouGatherer.csprojResolveAssemblyReference.cache
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\obj\Debug\netcoreapp2.0\JobsMe.DouGatherer.csproj.CoreCompileInputs.cache
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\obj\Debug\netcoreapp2.0\JobsMe.DouGatherer.AssemblyInfoInputs.cache
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\obj\Debug\netcoreapp2.0\JobsMe.DouGatherer.AssemblyInfo.cs
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\obj\Debug\netcoreapp2.0\JobsMe.DouGatherer.dll
+C:\Users\bir\Documents\GitHub\JobsMe\JobsMe\JobsMe.DouGatherer\obj\Debug\netcoreapp2.0\JobsMe.DouGatherer.pdb

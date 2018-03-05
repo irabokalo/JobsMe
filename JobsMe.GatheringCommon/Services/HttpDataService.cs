@@ -9,7 +9,7 @@ namespace JobsMe.GatheringCommon.Services
 {
     public class HttpDataService : IDataService
     {
-        public async Task<string> GetData(string url)
+        public async Task<string> GetDataAsync(string url)
         {
             string res;
             using (var httpClient = new HttpClient())

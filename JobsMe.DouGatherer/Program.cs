@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using JobsMe.GatheringCommon.Entities;
+using JobsMe.GatheringCommon.Extensions;
 
 namespace JobsMe.DouGatherer
 {
@@ -6,7 +9,10 @@ namespace JobsMe.DouGatherer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string jsonData = System.IO.File.ReadAllText("dou.json");
+            var config = jsonData.ConvertJsonToClass<ConfigEntity>();
+            var parser = new DouParser(config);
+            var result =  parser.GetDouData().Result;
         }
     }
 }

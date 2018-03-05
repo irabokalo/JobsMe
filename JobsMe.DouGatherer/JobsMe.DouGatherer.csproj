@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JobsMe.GatheringCommon\JobsMe.GatheringCommon.csproj" />
+  </ItemGroup>
+
 </Project>
