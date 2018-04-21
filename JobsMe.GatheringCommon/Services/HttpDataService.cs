@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using JobsMe.GatheringCommon.Abstract;
+using RestSharp;
 
 namespace JobsMe.GatheringCommon.Services
 {
@@ -11,14 +8,15 @@ namespace JobsMe.GatheringCommon.Services
     {
         public async Task<string> GetDataAsync(string url)
         {
-            string res;
-            using (var httpClient = new HttpClient())
+            var client = new RestClient(url)
             {
-                var response = await httpClient.GetAsync(url);
-                res = await response.Content.ReadAsStringAsync();
-            }
+                FollowRedirects = true
+            };
 
-            return res;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("User-Agent", @"Mozilla / 5.0(Windows NT 6.3; WOW64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 54.0.2840.99 Safari / 537.3");
+            var restResponse = await client.ExecuteTaskAsync(request);
+            return restResponse.Content;
         }
     }
 }
