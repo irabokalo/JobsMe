@@ -10,7 +10,7 @@ namespace JobsMe.DouGatherer
         static void Main(string[] args)
         {
             string jsonData = System.IO.File.ReadAllText("dou.json");
-            var config = jsonData.ConvertJsonToClass<ConfigEntity>();
+            var config = jsonData.ConvertJsonToClass<DouConfigEntity>();
             var parser = new DouParser(config);
             var result =  parser.GetDouData().Result;
         }

@@ -1,3 +1,9 @@
 ﻿{
-  "BaseUrl": "https://jobs.dou.ua/vacancies/?search=c%23"
+  "Urls": [
+    "https://jobs.dou.ua/vacancies/?search=c%23",
+    "https://jobs.dou.ua/vacancies/?search=Java",
+    "https://jobs.dou.ua/vacancies/?search=Frontend",
+    "https://jobs.dou.ua/vacancies/?search=Database"
+  ]
+ 
 }
