@@ -6,3 +6,23 @@ JobsMe.DouGatherer/bin/Debug/netcoreapp2.0/JobsMe.DouGatherer.pdb
 *.pdb
 *.cache
 *.cache
+JobsMe.GatheringCommon/obj/JobsMe.GatheringCommon.csproj.nuget.cache
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
