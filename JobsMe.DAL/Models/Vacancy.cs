@@ -13,6 +13,8 @@ namespace JobsMe.DAL.Models
         public Category Category { get; set; }
         public int CategoryId { get; set; }
         public double Experience { get; set; }
+        public string Salary { get; set; }
+        public string EnglishLevel { get; set; }
 
         public virtual ICollection<VacancyOffer> VacancyOffers { get; } = new List<VacancyOffer>();
         public virtual ICollection<VacancySkill> VacancySkills { get; } = new List<VacancySkill>();

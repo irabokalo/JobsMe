@@ -10,26 +10,26 @@ namespace JobsMe.RabotaUaGatherer
     {
         static void Main(string[] args)
         {
-            //string jsonData = System.IO.File.ReadAllText("./rabotaUa.json");
-            //var config = jsonData.ConvertJsonToClass<RabotaUaConfigEntity>();
-            //for (int i = 1; i < 4; i++)
-            //{
-            //    config.Urls.Add(config.BaseSearchUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
-            //                          .Replace("##", i.ToString()).ToString());
-            //}
-
-            //var parser = new RabotaUaParser(config);
-            //var result = parser.GetRaboutaUaData();
-
-
-            using (var db = new JobsDbContext())
+            string jsonData = System.IO.File.ReadAllText("./rabotaUa.json");
+            var config = jsonData.ConvertJsonToClass<RabotaUaConfigEntity>();
+            for (int i = 1; i < 2; i++)
             {
-                DbInitializer.Initialize(db);
-                foreach (var a in db.Levels)
-                {
-                    Console.WriteLine(" - {0}", a.Name);
-                }
+                config.Urls.Add(config.BaseSearchUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
+                                      .Replace("##", i.ToString()).ToString());
             }
+
+            var parser = new RabotaUaParser(config);
+            var result = parser.GetRaboutaUaData();
+
+
+            //using (var db = new JobsDbContext())
+            //{
+            //    DbInitializer.Initialize(db);
+            //    foreach (var a in db.Levels)
+            //    {
+            //        Console.WriteLine(" - {0}", a.Name);
+            //    }
+            //}
 
             Console.ReadLine();
         }

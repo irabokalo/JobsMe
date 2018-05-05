@@ -63,11 +63,17 @@ namespace JobsMe.RabotaUaGatherer
             }
         }
 
-        private void ParseJob(string html)
+        private void ParseJob(string vacancyHtml)
         {
             var doc = new HtmlDocument();
-            doc.LoadHtml(html);
-            var a = doc.DocumentNode.SelectNodes("//p").Where(x => _config.RequirementsKeysWords.Any(x.InnerText.ToLower().Contains));
+            doc.LoadHtml(vacancyHtml);
+            var name = doc.DocumentNode.SelectSingleNode("//h1[@class='f-vacname-holder fd-beefy-ronin f-text-black']")?.InnerHtml;
+            var salary = doc.DocumentNode.SelectSingleNode("//p[@class='f-salary-holder fd-syoi f-text-black']")
+                ?.SelectSingleNode("//span[@class='money']")?.InnerHtml;
+            var companyName = doc.DocumentNode.SelectSingleNode("//span[@itemprop='hiringOrganization']")
+                ?.SelectSingleNode("//span[@itemprop='name']")?.InnerHtml;
+
+            var mainText = doc.DocumentNode.SelectSingleNode("//div[@class='f-vacancy-description-inner-content']")?.InnerText;
         }
     }
 }
