@@ -10,6 +10,6 @@ namespace JobsMe.DAL.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public IList<Skill> Skills { get; set; }
+        public virtual ICollection<UserSkill> UserSkills { get; set; }
     }
 }
