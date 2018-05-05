@@ -11,7 +11,7 @@ namespace JobsMe.RabotaUaGatherer
         {
             string jsonData = System.IO.File.ReadAllText("rabotaUa.json");
             var config = jsonData.ConvertJsonToClass<RabotaUaConfigEntity>();
-            StringBuilder baseUrl = new StringBuilder(config.BaseUrl);
+            StringBuilder baseUrl = new StringBuilder(config.BaseSearchUrl);
             for (int i = 1; i < 4; i++)
             {
                 config.Urls.Add(baseUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
@@ -19,7 +19,7 @@ namespace JobsMe.RabotaUaGatherer
             }
 
             var parser = new RabotaUaParser(config);
-            var result = parser.GetRaboutaUaData().Result;
+            var result = parser.GetRaboutaUaData();
 
             Console.ReadLine();
         }

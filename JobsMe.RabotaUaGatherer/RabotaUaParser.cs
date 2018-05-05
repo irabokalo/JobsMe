@@ -3,6 +3,7 @@ using JobsMe.GatheringCommon.Abstract;
 using JobsMe.GatheringCommon.Entities;
 using JobsMe.GatheringCommon.Services;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace JobsMe.RabotaUaGatherer
@@ -23,23 +24,49 @@ namespace JobsMe.RabotaUaGatherer
             _config = config;
         }
 
-        public async Task<IList<string>> GetRaboutaUaData()
-        {
-            var resultList = new List<string>();
+        public IList<string> GetRaboutaUaData()
+        { 
+            var jobLinks = new List<string>();
+
             foreach (var url in _config.Urls)
             {
-                var result = await _dataService.GetDataAsync(url);
-                resultList.Add(result);
-                //var allJobLinks = ParseHtml(result); 
+                var result =  _dataService.GetDataAsync(url).Result;
+                jobLinks.AddRange(GetJobLinks(result)); 
             }
-
-            return resultList;
+            GetAllJobs(jobLinks);
+            return jobLinks;
         }
 
-        //private IList<string> ParseHtml(string html)
-        //{
-        //    var doc = new HtmlDocument();
-        //    doc.LoadHtml(html);
-        //}
+        private List<string> GetJobLinks(string html)
+        {
+            var jobLinks = new List<string>();
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            foreach (HtmlNode node in doc.DocumentNode.SelectNodes("//a[@class='f-visited-enable ga_listing']"))
+            {
+                var jobLink = node.GetAttributeValue("href", null);
+                jobLinks.Add(jobLink);
+            }
+
+            return jobLinks;
+        }
+
+        private void GetAllJobs(IList<string> jobLinks)
+        {
+            var jobs = new List<string>();
+            foreach(var jobLink in jobLinks)
+            {
+                var jobHtml = _dataService.GetDataAsync(_config.BaseRabotaUaUrl + jobLink).Result;
+                jobs.Add(jobHtml);
+            }
+        }
+
+        private void ParseJob(string html)
+        {
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            var a = doc.DocumentNode.SelectNodes("//p").Where(x => _config.RequirementsKeysWords.Any(x.InnerText.ToLower().Contains));
+        }
     }
 }

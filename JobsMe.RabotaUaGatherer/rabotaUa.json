@@ -1,3 +1,36 @@
 ﻿{
-  "BaseUrl": "https://rabota.ua/ua/jobsearch/vacancy_list?rubricIds=11,6,9,8&parentId=1&period=2&lastdate=**&pg=##"
+  "BaseSearchUrl": "https://rabota.ua/ua/jobsearch/vacancy_list?rubricIds=11,6,9,8&parentId=1&period=2&lastdate=**&pg=##",
+  "BaseRabotaUaUrl": "https://rabota.ua",
+  "RequirementsKeysWords": [
+    "кequirements",
+    "skills",
+    "вимоги",
+    "требование",
+    "навыки"
+  ],
+  "ExperienceKeyWords": [
+    "роки",
+    "рік",
+    "досвід",
+    "лет",
+    "experience",
+    "years",
+    "qualification"
+  ],
+  "OffersKeyWords": [
+    "offer",
+    "пропонуємо",
+    "пропозиції",
+    "benefit",
+    "условие",
+    "предлагаем"
+  ],
+  "PlusKeyWords": [
+    "plus"
+  ],
+  "ProjectKeyWords": [
+    "about project",
+    "про проект",
+    "о проекте"
+  ]
 }
