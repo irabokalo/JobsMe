@@ -59,6 +59,7 @@ namespace JobsMe.RabotaUaGatherer
             {
                 var jobHtml = _dataService.GetDataAsync(_config.BaseRabotaUaUrl + jobLink).Result;
                 jobs.Add(jobHtml);
+                ParseJob(jobHtml);
             }
         }
 

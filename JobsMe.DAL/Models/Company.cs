@@ -6,7 +6,6 @@ namespace JobsMe.DAL.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Location { get; set; }
 
         public virtual ICollection<Vacancy> Vacancies { get; set; }
     }

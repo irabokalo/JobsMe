@@ -24,8 +24,7 @@ namespace JobsMe.RabotaUaGatherer
 
             using (var db = new JobsDbContext())
             {
-                db.Levels.Add(new Level { Name = "Junior" });
-                db.SaveChanges();
+                DbInitializer.Initialize(db);
                 foreach (var a in db.Levels)
                 {
                     Console.WriteLine(" - {0}", a.Name);
