@@ -7,6 +7,7 @@ namespace JobsMe.DAL.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int? RabotaUaId { get; set; }
         public Company Company { get; set; }
         public int CompanyId { get; set; }
         public double Salary { get; set; }

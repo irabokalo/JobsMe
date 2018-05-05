@@ -80,7 +80,6 @@ namespace JobsMe.DAL.Repositories.Concrete
         public void BulkInsertVacancies(IEnumerable<Vacancy> vacancies)
         {
             context.Vacancies.AddRange(vacancies);
-
             context.SaveChanges();
         }
 

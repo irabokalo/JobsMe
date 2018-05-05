@@ -61,6 +61,7 @@ namespace JobsMe.RabotaUaGatherer
                 jobsCollection.Add(new Vacancy
                 {
                     Name = vacancy.Name,
+                    RabotaUaId = vacancy.Id,
                     Company = companies.FirstOrDefault(x => x.Name == vacancy.CompanyName),
                     Salary = vacancy.Salary,
                     Hot = vacancy.Hot,
