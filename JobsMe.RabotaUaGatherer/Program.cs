@@ -1,7 +1,8 @@
-﻿using JobsMe.GatheringCommon.Entities;
+﻿using JobsMe.DAL;
+using JobsMe.DAL.Models;
+using JobsMe.GatheringCommon.Entities;
 using JobsMe.GatheringCommon.Extensions;
 using System;
-using System.Text;
 
 namespace JobsMe.RabotaUaGatherer
 {
@@ -9,16 +10,27 @@ namespace JobsMe.RabotaUaGatherer
     {
         static void Main(string[] args)
         {
-            string jsonData = System.IO.File.ReadAllText("rabotaUa.json");
-            var config = jsonData.ConvertJsonToClass<RabotaUaConfigEntity>();
-            for (int i = 1; i < 4; i++)
-            {
-                config.Urls.Add(config.BaseSearchUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
-                                      .Replace("##", i.ToString()).ToString());
-            }
+            //string jsonData = System.IO.File.ReadAllText("./rabotaUa.json");
+            //var config = jsonData.ConvertJsonToClass<RabotaUaConfigEntity>();
+            //for (int i = 1; i < 4; i++)
+            //{
+            //    config.Urls.Add(config.BaseSearchUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
+            //                          .Replace("##", i.ToString()).ToString());
+            //}
 
-            var parser = new RabotaUaParser(config);
-            var result = parser.GetRaboutaUaData();
+            //var parser = new RabotaUaParser(config);
+            //var result = parser.GetRaboutaUaData();
+
+
+            using (var db = new JobsDbContext())
+            {
+                db.Levels.Add(new Level { Name = "Junior" });
+                db.SaveChanges();
+                foreach (var a in db.Levels)
+                {
+                    Console.WriteLine(" - {0}", a.Name);
+                }
+            }
 
             Console.ReadLine();
         }

@@ -5,24 +5,19 @@ namespace JobsMe.DAL
 {
     public class JobsDbContext : DbContext
     {
-        public JobsDbContext(DbContextOptions<JobsDbContext> options) : base(options)
-        {
-           
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=JobsDb;Trusted_Connection=True;");
         }
 
 
-        DbSet<User> Users { get; set; }
-        DbSet<Vacancy> Vacancies { get; set; }
-        DbSet<Skill> Skills { get; set; }
-        DbSet<Company> Companies { get; set; }
-        DbSet<Offer> Offers { get; set; }
-        DbSet<Responsibility> Responsibilities { get; set; }
-        DbSet<Level> Levels { get; set; }
-        DbSet<Category> Categories { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Vacancy> Vacancies { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Offer> Offers { get; set; }
+        public DbSet<Responsibility> Responsibilities { get; set; }
+        public DbSet<Level> Levels { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
