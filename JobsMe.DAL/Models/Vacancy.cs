@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace JobsMe.DAL.Models
 {
@@ -8,12 +9,18 @@ namespace JobsMe.DAL.Models
         public string Name { get; set; }
         public Company Company { get; set; }
         public int CompanyId { get; set; }
+        public double Salary { get; set; }
+        public string CityName { get; set; }
+        public DateTime AddDate { get; set; }
+        public bool Hot { get; set; }
+
         public Level Level { get; set; }
-        public int LevelId { get; set; }
+        public int? LevelId { get; set; }
         public Category Category { get; set; }
-        public int CategoryId { get; set; }
-        public double Experience { get; set; }
-        public string Salary { get; set; }
+        public int? CategoryId { get; set; }
+
+        public string Experience { get; set; }
+
         public string EnglishLevel { get; set; }
 
         public virtual ICollection<VacancyOffer> VacancyOffers { get; } = new List<VacancyOffer>();

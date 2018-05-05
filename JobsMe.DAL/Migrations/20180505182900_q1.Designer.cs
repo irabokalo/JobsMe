@@ -10,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JobsMe.DAL.Migrations
 {
     [DbContext(typeof(JobsDbContext))]
-    partial class JobsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180505182900_q1")]
+    partial class q1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,7 +136,7 @@ namespace JobsMe.DAL.Migrations
 
                     b.Property<string>("CityName");
 
-                    b.Property<int>("CompanyId");
+                    b.Property<int?>("CompanyId");
 
                     b.Property<string>("EnglishLevel");
 
@@ -220,8 +221,7 @@ namespace JobsMe.DAL.Migrations
 
                     b.HasOne("JobsMe.DAL.Models.Company", "Company")
                         .WithMany("Vacancies")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("CompanyId");
 
                     b.HasOne("JobsMe.DAL.Models.Level", "Level")
                         .WithMany()

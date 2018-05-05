@@ -16,7 +16,7 @@ namespace JobsMe.DAL.Repositories.Concrete
             context = new JobsDbContext();
         }
 
-        public void DeleteStudent(int vacancyId)
+        public void DeleteVacancy(int vacancyId)
         {
             Vacancy vacancy = context.Vacancies.Find(vacancyId);
             context.Vacancies.Remove(vacancy);
@@ -32,7 +32,7 @@ namespace JobsMe.DAL.Repositories.Concrete
             return context.Vacancies.Find(vacancyId);
         }
 
-        public void InsertStudent(Vacancy vacancy)
+        public void InsertVacancy(Vacancy vacancy)
         {
             context.Vacancies.Add(vacancy);
         }
@@ -42,7 +42,7 @@ namespace JobsMe.DAL.Repositories.Concrete
             context.SaveChanges();
         }
 
-        public void UpdateStudent(Vacancy vacancy)
+        public void UpdateVacancy(Vacancy vacancy)
         {
             context.Entry(vacancy).State = EntityState.Modified;
         }
@@ -65,6 +65,28 @@ namespace JobsMe.DAL.Repositories.Concrete
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void BulkSaveInsertCompanies(IList<string> companyNames)
+        {
+            var allCompanies = context.Companies.Select(x => x.Name).ToList();
+            var companiesToInsert = companyNames.Where(x => !allCompanies.Contains(x))
+                .Select(y => new Company { Name = y });
+            context.Companies.AddRange(companiesToInsert);
+
+            context.SaveChanges();
+        }
+
+        public void BulkInsertVacancies(IEnumerable<Vacancy> vacancies)
+        {
+            context.Vacancies.AddRange(vacancies);
+
+            context.SaveChanges();
+        }
+
+        public IEnumerable<Company> GetAllCompaniesByNames(IEnumerable<string> companyNames)
+        {
+            return context.Companies.Where(x => companyNames.ToList().Contains(x.Name));
         }
     }
 }

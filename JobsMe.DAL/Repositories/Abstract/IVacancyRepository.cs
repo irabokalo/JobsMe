@@ -8,9 +8,12 @@ namespace JobsMe.DAL.Repositories.Abstract
     {
         IEnumerable<Vacancy> GetVacancies();
         Vacancy GetVacancy(int vacancyId);
-        void InsertStudent(Vacancy vacancy);
-        void DeleteStudent(int vacancyId);
-        void UpdateStudent(Vacancy vacancy);
+        void InsertVacancy(Vacancy vacancy);
+        void BulkInsertVacancies(IEnumerable<Vacancy> vacancies);
+        void DeleteVacancy(int vacancyId);
+        void UpdateVacancy(Vacancy vacancy);
         void Save();
+        void BulkSaveInsertCompanies(IList<string> companyNames);
+        IEnumerable<Company> GetAllCompaniesByNames(IEnumerable<string> companyNames);
     }
 }

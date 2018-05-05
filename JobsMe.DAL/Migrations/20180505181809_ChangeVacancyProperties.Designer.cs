@@ -10,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JobsMe.DAL.Migrations
 {
     [DbContext(typeof(JobsDbContext))]
-    partial class JobsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180505181809_ChangeVacancyProperties")]
+    partial class ChangeVacancyProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,7 +132,7 @@ namespace JobsMe.DAL.Migrations
 
                     b.Property<DateTime>("AddDate");
 
-                    b.Property<int?>("CategoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<string>("CityName");
 
@@ -143,7 +144,7 @@ namespace JobsMe.DAL.Migrations
 
                     b.Property<bool>("Hot");
 
-                    b.Property<int?>("LevelId");
+                    b.Property<int>("LevelId");
 
                     b.Property<string>("Name");
 
@@ -216,7 +217,8 @@ namespace JobsMe.DAL.Migrations
                 {
                     b.HasOne("JobsMe.DAL.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("JobsMe.DAL.Models.Company", "Company")
                         .WithMany("Vacancies")
@@ -225,7 +227,8 @@ namespace JobsMe.DAL.Migrations
 
                     b.HasOne("JobsMe.DAL.Models.Level", "Level")
                         .WithMany()
-                        .HasForeignKey("LevelId");
+                        .HasForeignKey("LevelId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("JobsMe.DAL.Models.VacancyOffer", b =>

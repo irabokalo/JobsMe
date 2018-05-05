@@ -12,14 +12,15 @@ namespace JobsMe.RabotaUaGatherer
         {
             string jsonData = System.IO.File.ReadAllText("./rabotaUa.json");
             var config = jsonData.ConvertJsonToClass<RabotaUaConfigEntity>();
-            for (int i = 1; i < 2; i++)
-            {
-                config.Urls.Add(config.BaseSearchUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
-                                      .Replace("##", i.ToString()).ToString());
-            }
+            //for (int i = 1; i < 2; i++)
+            //{
+            //    config.Urls.Add(config.BaseSearchUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
+            //                          .Replace("##", i.ToString()).ToString());
+            //}
 
             var parser = new RabotaUaParser(config);
-            var result = parser.GetRaboutaUaData();
+        
+            // var result = parser.GetRaboutaUaData();
 
 
             //using (var db = new JobsDbContext())
@@ -30,6 +31,8 @@ namespace JobsMe.RabotaUaGatherer
             //        Console.WriteLine(" - {0}", a.Name);
             //    }
             //}
+
+            parser.GetJobsForAllPages();
 
             Console.ReadLine();
         }
