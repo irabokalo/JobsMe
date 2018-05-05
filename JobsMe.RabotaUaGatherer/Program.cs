@@ -11,10 +11,9 @@ namespace JobsMe.RabotaUaGatherer
         {
             string jsonData = System.IO.File.ReadAllText("rabotaUa.json");
             var config = jsonData.ConvertJsonToClass<RabotaUaConfigEntity>();
-            StringBuilder baseUrl = new StringBuilder(config.BaseSearchUrl);
             for (int i = 1; i < 4; i++)
             {
-                config.Urls.Add(baseUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
+                config.Urls.Add(config.BaseSearchUrl.Replace("**", DateTime.Now.AddHours(-24).ToShortDateString())
                                       .Replace("##", i.ToString()).ToString());
             }
 
