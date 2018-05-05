@@ -69,8 +69,8 @@ namespace JobsMe.DAL.Repositories.Concrete
 
         public void BulkSaveInsertCompanies(IList<string> companyNames)
         {
-            var allCompanies = context.Companies.Select(x => x.Name).ToList();
-            var companiesToInsert = companyNames.Where(x => !allCompanies.Contains(x))
+            var allCompanies = context.Companies.Select(x => x.Name.ToLower()).ToList();
+            var companiesToInsert = companyNames.Where(x => !allCompanies.Contains(x.ToLower()))
                 .Select(y => new Company { Name = y });
             context.Companies.AddRange(companiesToInsert);
 

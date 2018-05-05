@@ -10,4 +10,3 @@ namespace JobsMe.RabotaUaGatherer.Models
         public int Page { get; set; }
     }
 }
-

@@ -6,6 +6,7 @@ using JobsMe.GatheringCommon.Abstract;
 using JobsMe.GatheringCommon.Entities;
 using JobsMe.GatheringCommon.Services;
 using JobsMe.RabotaUaGatherer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace JobsMe.RabotaUaGatherer
 {
     public class RabotaUaParser
     {
-        const int PAGES_COUNT = 1;
+        const int PAGES_COUNT = 5;
 
         private readonly IDataService _dataService = new HttpDataService();
         private RabotaUaConfigEntity _config;
@@ -46,7 +47,8 @@ namespace JobsMe.RabotaUaGatherer
 
             for (int i = 1; i <= PAGES_COUNT; i++)
             {
-                var jobs = _dataService.GetAllJobs(_config.SearchRequestUrl, i).Result.Documents;
+                var jobs = _dataService.GetAllJobs(_config.SearchRequestUrl, i).Result.Documents
+                                        .Where(job => DateTime.Today - job.AddDate.Date == TimeSpan.FromDays(1));
                 allCompanies.AddRange(jobs.Select(job => job.CompanyName).Distinct().ToList());
                 jobIds.AddRange(jobs.Select(job => job.Id));
                 vacancies.AddRange(jobs);
@@ -67,7 +69,7 @@ namespace JobsMe.RabotaUaGatherer
                 });
             }
             _repository.BulkInsertVacancies(jobsCollection);
-
+            Console.WriteLine("Done");
             //return result;
         }
 
