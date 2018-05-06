@@ -1,4 +1,5 @@
 ﻿using JobsMe.BotApp.Models;
+using System.Diagnostics;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -9,10 +10,11 @@ namespace JobsMe.BotApp
     {
         protected void Application_Start()
         {
+            Trace.TraceError("Appliation start...");
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-             Bot.Get();
+            Bot.Get();
         }
     }
 }

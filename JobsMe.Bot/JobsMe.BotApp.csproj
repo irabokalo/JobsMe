@@ -145,6 +145,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\HelloCommand.cs" />
+    <Compile Include="Commands\HotVacancyCommand.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Global.asax.cs">

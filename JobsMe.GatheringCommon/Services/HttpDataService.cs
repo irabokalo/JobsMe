@@ -29,7 +29,7 @@ namespace JobsMe.GatheringCommon.Services
             request.RequestFormat = DataFormat.Json;
             request.AddBody(new JobSearchRequestModel{
                 ParentId = 1,
-                RubricIds = new List<int> {    11,6,9,8 },
+                RubricIds = new List<int> {    11,9,8 },
                 Period = 2,
                 Page = page
             });
