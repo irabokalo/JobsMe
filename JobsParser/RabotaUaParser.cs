@@ -32,7 +32,6 @@ namespace JobsParser
             _repository = new VacancyRepository();
         }
 
-
         public void GetJobsForAllPages()
         {
             var vacancies = new List<VacancyResultItem>();
@@ -69,6 +68,8 @@ namespace JobsParser
             Console.WriteLine("Done");
             //return result;
         }
+
+
 
         //public IList<string> GetRaboutaUaData()
         //{
