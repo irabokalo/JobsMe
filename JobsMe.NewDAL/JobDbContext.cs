@@ -76,6 +76,19 @@ namespace JobsMe.NewDAL
             {
                 context.Companies.Add(company);
             }
+
+            context.Skills.Add(new Skill
+            {
+                Name = "C#"
+            });
+            context.Skills.Add(new Skill
+            {
+                Name = "ASP.NET"
+            });
+            context.Skills.Add(new Skill
+            {
+                Name = "OOP"
+            });
             context.SaveChanges();
 
             base.Seed(context);
