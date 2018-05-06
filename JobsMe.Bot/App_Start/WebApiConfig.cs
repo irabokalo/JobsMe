@@ -1,5 +1,4 @@
 ﻿using System.Web.Http;
-
 namespace JobsMe.BotApp
 {
     public static class WebApiConfig
