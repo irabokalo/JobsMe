@@ -102,8 +102,11 @@ namespace JobsMe.NewDAL.Repositories.Concrete
 
         public List<Vacancy> GetVacanciesByCompanyName(string companyName)
         {
+            int companyId = context.Companies.FirstOrDefault(x => x.Name.Contains(companyName)).Id;
 
-            return new List<Vacancy>();
+            var vacancies = context.Vacancies.Where(x => x.CompanyId == companyId).Take(5).ToList();
+
+            return vacancies;
         }
 
     }
