@@ -18,7 +18,7 @@ namespace JobsMe.NewDAL
         }
 
 
-        public JobDbContext() : base(@"Server=(localdb)\mssqllocaldb;Database=JobsDbNew;Trusted_Connection=True;")
+        public JobDbContext() : base(@"Server=TOSHIBA;Database=JobsDbNew;Trusted_Connection=True;")
         {
         }
 

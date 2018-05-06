@@ -76,7 +76,9 @@
     <None Include="App.config" />
     <None Include="mapping.json" />
     <None Include="packages.config" />
-    <None Include="rabotaUa.json" />
+    <None Include="rabotaUa.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JobsMe.NewDAL\JobsMe.NewDAL.csproj">

@@ -1,4 +1,5 @@
-﻿using JobsMe.BotApp.Commands;
+﻿using JobsMe.Bot.Commands;
+using JobsMe.BotApp.Commands;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -21,6 +22,7 @@ namespace JobsMe.BotApp.Models
 
             commandsList = new List<Command>();
             commandsList.Add(new HelloCommand());
+            commandsList.Add(new HotVacancyCommand());
             //TODO: Add more commands
 
             client = new TelegramBotClient(AppSettings.Key);
