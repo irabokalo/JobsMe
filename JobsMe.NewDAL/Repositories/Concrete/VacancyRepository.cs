@@ -99,10 +99,12 @@ namespace JobsMe.NewDAL.Repositories.Concrete
             return context.LanguageLevels.FirstOrDefault(x => x.Id == levelId);
         }
 
+
         public List<Vacancy> GetVacanciesByCompanyName(string companyName)
         {
 
             return new List<Vacancy>();
         }
+
     }
 }

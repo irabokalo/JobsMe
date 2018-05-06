@@ -62,14 +62,16 @@ namespace JobsParser
                     Hot = vacancy.Hot,
                     CityName = vacancy.CityName,
                     AddDate = vacancy.AddDate,
+                    RabotaUaCompanyId = vacancy.NotebookId,
+                    VacancyUrl = $"https://rabota.ua/company{vacancy.NotebookId}3184369/vacancy{vacancy.Id}"
                 });
             }
+
             _repository.BulkInsertVacancies(jobsCollection);
             Console.WriteLine("Done");
             //return result;
         }
-
-
+        
 
         //public IList<string> GetRaboutaUaData()
         //{

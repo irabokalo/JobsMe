@@ -17,7 +17,6 @@ namespace JobsMe.NewDAL
             base.OnModelCreating(modelBuilder);
         }
 
-
         public JobDbContext() : base(@"Server=TOSHIBA;Database=JobsDbNew;Trusted_Connection=True;")
         {
         }
