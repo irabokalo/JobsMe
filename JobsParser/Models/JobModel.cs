@@ -20,6 +20,6 @@ namespace JobsParser
         public string CompanyName { get; set; }
         public double Salary { get; set; }
         public int ProfLevelId { get; set; }
-
+        public int NotebookId { get; set; }
     }
 }

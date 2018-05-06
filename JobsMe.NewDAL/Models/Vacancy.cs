@@ -14,6 +14,8 @@ namespace JobsMe.NewDAL.Models
         public string CityName { get; set; }
         public DateTime AddDate { get; set; }
         public bool Hot { get; set; }
+        public string VacancyUrl { get; set; }
+        public int RabotaUaCompanyId { get; set; }
 
         public virtual ICollection<Skill> Skills { get; set; }
     }

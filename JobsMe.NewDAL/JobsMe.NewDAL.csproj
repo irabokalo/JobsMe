@@ -56,6 +56,10 @@
     <Compile Include="Migrations\201805061944574_new.Designer.cs">
       <DependentUpon>201805061944574_new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805062030460_companyId.cs" />
+    <Compile Include="Migrations\201805062030460_companyId.Designer.cs">
+      <DependentUpon>201805062030460_companyId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Language.cs" />
@@ -76,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805061944574_new.resx">
       <DependentUpon>201805061944574_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805062030460_companyId.resx">
+      <DependentUpon>201805062030460_companyId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
