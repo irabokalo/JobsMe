@@ -1,10 +1,10 @@
-﻿using JobsMe.NewDAL;
-using JobsMe.NewDAL.Models;
-using JobsMe.GatheringCommon.Entities;
-using JobsMe.GatheringCommon.Extensions;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace JobsMe.RabotaUaGatherer
+namespace JobsParser
 {
     class Program
     {

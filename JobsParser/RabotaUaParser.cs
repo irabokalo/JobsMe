@@ -2,10 +2,6 @@
 using JobsMe.NewDAL.Models;
 using JobsMe.NewDAL.Repositories.Abstract;
 using JobsMe.NewDAL.Repositories.Concrete;
-using JobsMe.GatheringCommon.Abstract;
-using JobsMe.GatheringCommon.Entities;
-using JobsMe.GatheringCommon.Services;
-using JobsMe.RabotaUaGatherer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace JobsMe.RabotaUaGatherer
+namespace JobsParser
 { 
     public class RabotaUaParser
     {
