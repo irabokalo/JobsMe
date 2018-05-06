@@ -12,10 +12,10 @@ namespace JobsMe.BotApp.Controllers
         [Route(@"api/message/update")] //webhook uri part
         public async Task<OkResult> Update([FromBody]Update update)
         {
-            var commands = Bot.Commands;
+            var commands = JobsMe.BotApp.Models.Bot.Commands;
             Trace.TraceError("Message that sth happened");
             var message = update.Message;
-            var client = await Bot.Get();
+            var client = await JobsMe.BotApp.Models.Bot.Get();
 
             foreach (var command in commands)
             {
