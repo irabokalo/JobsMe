@@ -1,5 +1,6 @@
 .vs
 .vs/JobsMe/v15/.suo
+.packages/
 .vs/JobsMe/v15/Server/sqlite3/db.lock
 *.dll
 JobsMe.DouGatherer/bin/Debug/netcoreapp2.0/JobsMe.DouGatherer.pdb
