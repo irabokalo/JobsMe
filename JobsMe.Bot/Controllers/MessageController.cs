@@ -1,5 +1,7 @@
-﻿using System;
+﻿using JobsMe.BotApp.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -15,9 +17,10 @@ namespace JobsMe.BotApp.Controllers
         [Route(@"api/message/update")] //webhook uri part
         public async Task<OkResult> Update([FromBody]Update update)
         {
-            var commands = JobsMe.BotApp.Models.Bot.Commands;
+            var commands = Bot.Commands;
+            Trace.TraceError("Message that sth happened");
             var message = update.Message;
-            var client = await JobsMe.BotApp.Models.Bot.Get();
+            var client = await Bot.Get();
 
             foreach (var command in commands)
             {
@@ -27,8 +30,9 @@ namespace JobsMe.BotApp.Controllers
                     break;
                 }
             }
-
+           
             return Ok();
         }
+       
     }
 }
