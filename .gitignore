@@ -1,5 +1,5 @@
 #NuGet
-packages/*
+packages/
 
 .vs
 .vs/JobsMe/v15/.suo
@@ -30,6 +30,3 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-
-*.js
-*.js
