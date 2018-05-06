@@ -14,6 +14,7 @@ namespace JobsMe.DAL.Repositories.Concrete
         public VacancyRepository()
         {
             context = new JobsDbContext();
+            DbInitializer.Initialize(context);
         }
 
         public void DeleteVacancy(int vacancyId)
@@ -87,5 +88,16 @@ namespace JobsMe.DAL.Repositories.Concrete
         {
             return context.Companies.Where(x => companyNames.ToList().Contains(x.Name));
         }
+
+        public Language GetLanguage(int languageId)
+        {
+            return context.Languages.FirstOrDefault(x => x.Id == languageId);
+        }
+
+        public LanguageLevel GetLanguageLevel(int levelId)
+        {
+            return context.LanguageLevels.FirstOrDefault(x => x.Id == levelId);
+        }
+
     }
 }

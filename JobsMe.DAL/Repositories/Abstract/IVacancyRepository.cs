@@ -15,5 +15,7 @@ namespace JobsMe.DAL.Repositories.Abstract
         void Save();
         void BulkSaveInsertCompanies(IList<string> companyNames);
         IEnumerable<Company> GetAllCompaniesByNames(IEnumerable<string> companyNames);
+        Language GetLanguage(int languageId);
+        LanguageLevel GetLanguageLevel(int levelId);
     }
 }
