@@ -21,5 +21,8 @@ namespace JobsParser
         public double Salary { get; set; }
         public int ProfLevelId { get; set; }
         public int NotebookId { get; set; }
+        public string Description { get; set; }
+        public List<VacancyLanguage> Languages { get; set; }
     }
+
 }

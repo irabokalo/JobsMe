@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using JobsMe.NewDAL;
 using JobsMe.NewDAL.Models;
 using JobsMe.NewDAL.Repositories.Abstract;
 using JobsMe.NewDAL.Repositories.Concrete;
@@ -10,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace JobsParser
-{ 
+{
     public class RabotaUaParser
     {
         const int PAGES_COUNT = 5;
@@ -48,12 +49,12 @@ namespace JobsParser
                 jobIds.AddRange(jobs.Select(job => job.Id));
                 vacancies.AddRange(jobs);
             }
-           
+
             _repository.BulkSaveInsertCompanies(allCompanies);
             var companies = _repository.GetAllCompaniesByNames(allCompanies).ToList();
             foreach (var vacancy in vacancies)
             {
-                jobsCollection.Add(new Vacancy
+                var vacancyToInsert = new Vacancy
                 {
                     Name = vacancy.Name,
                     RabotaUaId = vacancy.Id,
@@ -64,15 +65,78 @@ namespace JobsParser
                     AddDate = vacancy.AddDate,
                     RabotaUaCompanyId = vacancy.NotebookId,
                     VacancyUrl = $"https://rabota.ua/company{vacancy.NotebookId}3184369/vacancy{vacancy.Id}"
-                });
+                };
+                var languageSkills = GetLanguageSkills(vacancy.Languages);
+                var description = GetHtmlDescription(vacancy.Id);
+                var mainSkills = GetSkillsByDescription(description).Concat(languageSkills);
+                vacancyToInsert.Skills = mainSkills.ToList();
+                jobsCollection.Add(vacancyToInsert);
             }
 
             _repository.BulkInsertVacancies(jobsCollection);
             Console.WriteLine("Done");
-            //return result;
         }
-        
 
+        public List<Skill> GetSkillsByDescription(string html)
+        {
+            var skillIds = new List<int>();
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            var nodes = doc.DocumentNode.SelectNodes("//li")?.Select(x => x.InnerHtml).ToList();
+            if (nodes != null)
+            {
+                var skillsConcated = string.Join(" ", nodes).ToLower();
+                var allSkillsDictionary = GetSkillsDictionary();
+                foreach (var skill in allSkillsDictionary)
+                {
+                    foreach (var skillName in skill.Value)
+                    {
+                        if (skillsConcated.Contains(skillName.ToLower()))
+                        {
+                            skillIds.Add(int.Parse(skill.Key));
+                            break;
+                        }
+                    }
+                }
+
+                var skills = _repository.GetSkillsByIds(skillIds.Distinct().ToList());
+                return skills.ToList();
+            }
+
+            return new List<Skill>();
+        }
+
+        public string GetHtmlDescription(int id)
+        {
+            var result = _dataService.GetVacancy(id);
+            return result.Result?.Description;
+        }
+
+        public Dictionary<string, List<string>> GetSkillsDictionary()
+        {
+            string jsonData = System.IO.File.ReadAllText("mapping.json");
+            return jsonData.ConvertJsonToClass<Dictionary<string, List<string>>>();
+        }
+
+        public List<Skill> GetLanguageSkills(List<VacancyLanguage> vacancyLanguages)
+        {
+
+            var languageSkills = new List<Skill>();
+            foreach (var vacancyLanguage in vacancyLanguages)
+            {
+                var language = _repository.GetLanguage(vacancyLanguage.LanguageId);
+                var languageLevel = _repository.GetLanguageLevel(vacancyLanguage.LevelId);
+                if (language != null && languageLevel != null)
+                {
+                    var skillName = $"{language.En}_{languageLevel.En}";
+                    languageSkills.Add(_repository.GetSkillByName(skillName));
+                }
+            }
+
+            return languageSkills;
+        }
+
+        #region Unused but maybe useful
         //public IList<string> GetRaboutaUaData()
         //{
         //    var jobLinks = new List<string>();
@@ -178,5 +242,7 @@ namespace JobsParser
             var endIndex = (center + radius) > textLength ? textLength - 1 : center + radius;
             return text.Substring(startIndex, endIndex - startIndex);
         }
+
+        #endregion
     }
 }

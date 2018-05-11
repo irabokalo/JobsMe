@@ -74,7 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="mapping.json" />
+    <None Include="mapping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="rabotaUa.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

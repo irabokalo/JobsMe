@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsMe.NewDAL", "JobsMe.New
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsParser", "JobsParser\JobsParser.csproj", "{DB106BE1-C3DF-46E2-8719-AACD6F1ED3A8}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JobsMe.Database", "JobsMe.Database\JobsMe.Database.sqlproj", "{218C30AB-46A1-401A-A838-92AE9AA09C82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,12 @@ Global
 		{DB106BE1-C3DF-46E2-8719-AACD6F1ED3A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB106BE1-C3DF-46E2-8719-AACD6F1ED3A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB106BE1-C3DF-46E2-8719-AACD6F1ED3A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

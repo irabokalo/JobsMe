@@ -35,5 +35,15 @@ namespace JobsParser
             var results = JsonConvert.DeserializeObject<VacancySearchResponse>(response.Content);
             return results;
         }
+
+        public async Task<VacancyResultItem> GetVacancy(int id)
+        {
+            var client = new RestClient("https://api.rabota.ua/vacancy?id="+id);
+            var request = new RestRequest(Method.GET);
+            request.RequestFormat = DataFormat.Json;          
+            var response = await client.ExecuteTaskAsync(request);
+            var results = JsonConvert.DeserializeObject<VacancyResultItem>(response.Content);
+            return results;
+        }
     }
 }

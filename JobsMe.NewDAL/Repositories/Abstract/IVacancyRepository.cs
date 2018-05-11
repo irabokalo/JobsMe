@@ -17,5 +17,7 @@ namespace JobsMe.NewDAL.Repositories.Abstract
         IEnumerable<Company> GetAllCompaniesByNames(IEnumerable<string> companyNames);
         Language GetLanguage(int languageId);
         LanguageLevel GetLanguageLevel(int levelId);
+        Skill GetSkillByName(string name);
+        IList<Skill> GetSkillsByIds(IList<int> ids);
     }
 }
