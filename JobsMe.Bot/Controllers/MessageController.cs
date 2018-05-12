@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -13,18 +14,27 @@ namespace JobsMe.BotApp.Controllers
         public async Task<OkResult> Update([FromBody]Update update)
         {
             var commands = JobsMe.BotApp.Models.Bot.Commands;
-            Trace.TraceError("Message that sth happened");
-            var message = update.Message;
-            var client = await JobsMe.BotApp.Models.Bot.Get();
-
-            foreach (var command in commands)
+            Trace.TraceError("Controller method started...");
+            try
             {
-                if (command.Contains(message.Text))
+                var message = update.Message;
+                var client = await JobsMe.BotApp.Models.Bot.Get();
+
+                foreach (var command in commands)
                 {
-                    command.Execute(message, client);
-                    break;
+                    if (command.Contains(message.Text))
+                    {
+                        command.Execute(message, client);
+                        break;
+                    }
                 }
             }
+            catch (Exception e)
+            {
+               Trace.TraceError(e.Message);
+                throw;
+            }
+            
            
             return Ok();
         }
