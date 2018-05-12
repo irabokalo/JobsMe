@@ -1,3 +1,5 @@
+using JobsMe.NewDAL.Models;
+
 namespace JobsMe.NewDAL.Migrations
 {
     using System;
@@ -15,18 +17,65 @@ namespace JobsMe.NewDAL.Migrations
 
         protected override void Seed(JobsMe.NewDAL.JobDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+           
+                var languages = new Language[]
+                {
+                new Language {Id = 1, En = "English", Ru = "Английский", Ua = "Англійська"},
+                new Language {Id = 2, En = "German", Ru = "Немецкий", Ua = "Німецька"},
+                new Language {Id = 3, En = "French", Ru = "Французский", Ua = "Французька"},
+                new Language {Id = 4, En = "Spanish", Ru = "Испанский", Ua = "Іспанська"},
+                new Language {Id = 5, En = "Italian", Ru = "Итальянский", Ua = "Італійська"}
+                };
+                foreach (var language in languages)
+                {
+                    context.Languages.Add(language);
+                }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                var languageLevels = new LanguageLevel[]
+                {
+                new LanguageLevel {Id = 1, En = "elementary", Ua = "базовий", Ru = "базовый"},
+                new LanguageLevel {Id = 2, En = "lower intermediate", Ua = "нижче середнього", Ru = "ниже среднего"},
+                new LanguageLevel {Id = 3, En = "intermediate", Ua = "середній", Ru = "средний"},
+                new LanguageLevel {Id = 6, En = "upper intermediate", Ua = "вище середнього", Ru = "выше среднего"},
+                new LanguageLevel {Id = 4, En = "advanced", Ua = "поглиблений", Ru = "продвинутый"},
+                new LanguageLevel {Id = 5, En = "fluent", Ua = "вільно", Ru = "свободно"},
+                new LanguageLevel {Id = 7, En = "native", Ua = "рідна", Ru = "родной"}
+                };
+                foreach (var languageLevel in languageLevels)
+                {
+                    context.LanguageLevels.Add(languageLevel);
+                }
+
+                var companies = new Company[]
+                {
+                new Company {Name = "ELEKS"},
+                new Company {Name = "SoftServe"},
+                new Company {Name = "EPAM"},
+                new Company {Name = "Sombra"},
+                new Company {Name = "GlobalLogic"},
+                new Company {Name = "DataArt"},
+                new Company {Name = "InterLogic"},
+                new Company {Name = "Lohika"},
+                };
+
+                foreach (var company in companies)
+                {
+                    context.Companies.Add(company);
+                }
+
+                context.Skills.Add(new Skill
+                {
+                    Name = "C#"
+                });
+                context.Skills.Add(new Skill
+                {
+                    Name = "ASP.NET"
+                });
+                context.Skills.Add(new Skill
+                {
+                    Name = "OOP"
+                });
+                context.SaveChanges();
         }
     }
 }

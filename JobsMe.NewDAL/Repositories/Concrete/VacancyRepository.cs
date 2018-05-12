@@ -4,6 +4,7 @@ using JobsMe.NewDAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 
 namespace JobsMe.NewDAL.Repositories.Concrete
@@ -101,11 +102,23 @@ namespace JobsMe.NewDAL.Repositories.Concrete
 
         public List<Vacancy> GetVacanciesByCompanyName(string companyName)
         {
-            int companyId = context.Companies.FirstOrDefault(x => x.Name.Contains(companyName)).Id;
+            try
+            {
+                Trace.TraceError("GetVacanciesByCompanyName...");
 
-            var vacancies = context.Vacancies.Where(x => x.CompanyId == companyId).Take(5).ToList();
+                var companyId = context.Companies.FirstOrDefault(x => x.Name.Contains(companyName))?.Id;
 
-            return vacancies;
+                var vacancies = context.Vacancies.Where(x => x.CompanyId == companyId).Take(5).ToList();
+
+                return vacancies;
+            }
+            catch (Exception e)
+            {
+                Trace.TraceError("Exception: " + e.Message);
+                Trace.TraceError("Inner Exception: " + e.InnerException?.Message);
+                throw;
+            }
+
         }
         public List<Vacancy> GetHotVacanciesByCompanyName(string companyName)
         {
