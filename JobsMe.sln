@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobsParser", "JobsParser\Jo
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "JobsMe.Database", "JobsMe.Database\JobsMe.Database.sqlproj", "{218C30AB-46A1-401A-A838-92AE9AA09C82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAnalyzingAlgorithms", "DataAnalyzingAlgorithms\DataAnalyzingAlgorithms.csproj", "{1D5D6E4A-ACD9-4996-A117-C11FBC91F4F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Release|Any CPU.Build.0 = Release|Any CPU
 		{218C30AB-46A1-401A-A838-92AE9AA09C82}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1D5D6E4A-ACD9-4996-A117-C11FBC91F4F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D5D6E4A-ACD9-4996-A117-C11FBC91F4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D5D6E4A-ACD9-4996-A117-C11FBC91F4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D5D6E4A-ACD9-4996-A117-C11FBC91F4F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{C9E5EE31-1CB4-413A-A3C9-9536B1ADE0C5} = {6CBC1668-88B4-4C63-B83A-CD1BC2358C25}
 		{DE6F09A9-AAA3-4D36-BE12-0FC94630939E} = {6CBC1668-88B4-4C63-B83A-CD1BC2358C25}
 		{DB106BE1-C3DF-46E2-8719-AACD6F1ED3A8} = {6CBC1668-88B4-4C63-B83A-CD1BC2358C25}
+		{1D5D6E4A-ACD9-4996-A117-C11FBC91F4F4} = {34250364-DAC8-491D-8B1D-86C1608DABC1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {810BC0B1-BDE4-472A-8253-E951A2B6D0FC}

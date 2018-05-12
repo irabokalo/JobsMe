@@ -18,10 +18,10 @@ namespace JobsMe.Bot.Commands
             var chatId = message.Chat.Id;
             var messageId = message.MessageId;
             var indexOfCompany = message.Text.IndexOf("company") + 7;
-            var seachedCompany = message.Text.Substring(indexOfCompany+1, message.Text.Length - indexOfCompany-1);
+            var searchedCompany = message.Text.Substring(indexOfCompany+1, message.Text.Length - indexOfCompany-1);
 
-            Trace.TraceError("Searched Company" + seachedCompany);
-            var companiesVacancies = repository.GetHotVacanciesByCompanyName(seachedCompany);
+            Trace.TraceError("Searched Company" + searchedCompany);
+            var companiesVacancies = analyzer.GetHotVacanciesByCompanyName(searchedCompany);
             client.SendTextMessageAsync(chatId, companiesVacancies.FirstOrDefault()?.VacancyUrl, replyToMessageId: messageId);
         }
     }

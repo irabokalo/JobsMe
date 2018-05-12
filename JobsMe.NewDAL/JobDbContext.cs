@@ -17,7 +17,7 @@ namespace JobsMe.NewDAL
             base.OnModelCreating(modelBuilder);
         }
 
-        public JobDbContext() : base("JobsMe")
+        public JobDbContext() : base(@"Server=(localdb)\mssqllocaldb;Database=JobsDbNew;Trusted_Connection=True;")
         {
         }
 
