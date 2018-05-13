@@ -11,7 +11,7 @@ namespace JobsMe.Bot.Commands
 {
     public class VacanciesBySkillsCommand : Command
     {
-        public override string Name => "vacanciesBySkills";
+        public override string Name => "vacanciesbyskills";
 
         public override void Execute(Message message, TelegramBotClient client)
         {
