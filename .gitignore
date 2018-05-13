@@ -30,3 +30,5 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+JobsMe.Database/JobsMe.Database.dbmdl
+JobsMe.Database/JobsMe.Database.jfm
