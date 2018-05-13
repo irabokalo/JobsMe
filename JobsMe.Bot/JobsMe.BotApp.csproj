@@ -152,7 +152,7 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CompanyCommand.cs" />
     <Compile Include="Commands\GetRecommendedSkills.cs" />
-    <Compile Include="Commands\GetVacancyBySkillsCommand.cs" />
+    <Compile Include="Commands\VacanciesBySkillsCommand.cs" />
     <Compile Include="Commands\HelloCommand.cs" />
     <Compile Include="Commands\HotVacancyCommand.cs" />
     <Compile Include="Controllers\HomeController.cs" />

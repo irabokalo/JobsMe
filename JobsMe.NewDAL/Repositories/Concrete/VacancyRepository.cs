@@ -141,7 +141,8 @@ namespace JobsMe.NewDAL.Repositories.Concrete
 
         public IList<Skill> GetSkillsByNames(IList<string> names)
         {
-            return context.Skills.Where(skill => names.Contains(skill.Name)).ToList();
+            names.ToList().ForEach(x => x = x.ToLower());
+            return context.Skills.Where(skill => names.Contains(skill.Name.ToLower())).ToList();
         }
 
         public IList<Vacancy> GetActualVacancies(DateTime date)
