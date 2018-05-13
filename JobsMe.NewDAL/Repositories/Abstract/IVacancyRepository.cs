@@ -12,6 +12,7 @@ namespace JobsMe.NewDAL.Repositories.Abstract
         void BulkInsertVacancies(IEnumerable<Vacancy> vacancies);
         void DeleteVacancy(int vacancyId);
         void UpdateVacancy(Vacancy vacancy);
+        Vacancy GetRandomVacancy();
         void Save();
         void BulkSaveInsertCompanies(IList<string> companyNames);
         IEnumerable<Company> GetAllCompaniesByNames(IEnumerable<string> companyNames);

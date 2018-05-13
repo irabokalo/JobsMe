@@ -22,6 +22,11 @@ namespace DataAnalyzingAlgorithms
             return repository.GetHotVacanciesByCompanyName(searchedCompany);
         }
 
+        public Vacancy GetRandomVacancy()
+        {
+            return repository.GetRandomVacancy();
+        }
+
         public IList<Vacancy> GetVacanciesBySkills(List<string> skillsNames)
         {
             var skills = repository.GetSkillsByNames(skillsNames);

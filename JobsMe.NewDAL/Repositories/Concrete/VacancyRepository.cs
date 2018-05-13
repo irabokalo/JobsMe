@@ -129,6 +129,14 @@ namespace JobsMe.NewDAL.Repositories.Concrete
             return vacancies;
         }
 
+        public Vacancy GetRandomVacancy()
+        {
+            var vacancies = context.Vacancies.ToList();
+            var rand = new Random();
+            var count = rand.Next(vacancies.Count - 1);
+            return vacancies[count];
+        }
+
         public Skill GetSkillByName(string name)
         {
             return context.Skills.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());

@@ -17,16 +17,18 @@ namespace JobsMe.Bot.Commands
         {
             var chatId = message.Chat.Id;
             var messageId = message.MessageId;
-            Trace.TraceError("Method execution started...");
+            Trace.TraceInformation("Method execution started...");
             try
             {
                 var indexOfCompany = message.Text.IndexOf("_", StringComparison.Ordinal);
-                var seachedCompany =
-                    message.Text.Substring(indexOfCompany + 1, message.Text.Length - indexOfCompany - 1);
+                var seachedCompany = message.Text.Substring(indexOfCompany + 1, message.Text.Length - indexOfCompany - 1);
 
-                Trace.TraceError("Searched Company: " + seachedCompany);
+                Trace.TraceInformation("Searched Company: " + seachedCompany);
                 var companiesVacancies = analyzer.GetHotVacanciesByCompanyName(seachedCompany);
-                client.SendTextMessageAsync(chatId, companiesVacancies.FirstOrDefault()?.VacancyUrl,
+                client.SendTextMessageAsync(chatId,
+                    companiesVacancies.Count > 0
+                        ? companiesVacancies.FirstOrDefault()?.VacancyUrl
+                        : $"No hot vacancies in company: {seachedCompany}",
                     replyToMessageId: messageId);
             }
             catch (Exception e)
