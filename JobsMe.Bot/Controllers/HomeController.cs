@@ -20,8 +20,24 @@ namespace JobsMe.BotApp.Controllers
         public List<Vacancy> GetCompanyVacancies()
         {
             string companyName = "Ciklum";
-            var companiesVacancies = analyzer.GetVacanciesByCompanyName(companyName);
+            var companiesVacancies = analyzer.GetVacanciesByCompanyName(companyName).ToList();
             return companiesVacancies;
+        }
+
+        public int TestBasicApriory()
+        {
+            return 0;
+        }
+
+        public List<Vacancy> GetVacanciesBySkills()
+        {
+            var vacancySkills = new List<string>()
+            {
+                "C#", "OOD"
+            };
+
+            var result = analyzer.GetVacanciesBySkills(vacancySkills);
+            return null;
         }
     }
 }

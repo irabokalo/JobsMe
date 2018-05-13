@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="AnalyzerManager.cs" />
     <Compile Include="AprioryAlgorithm.cs" />
+    <Compile Include="Models\VacancySkillsAnalysisModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

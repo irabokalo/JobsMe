@@ -100,7 +100,7 @@ namespace JobsMe.NewDAL.Repositories.Concrete
             return context.LanguageLevels.FirstOrDefault(x => x.Id == levelId);
         }
 
-        public List<Vacancy> GetVacanciesByCompanyName(string companyName)
+        public IList<Vacancy> GetVacanciesByCompanyName(string companyName)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace JobsMe.NewDAL.Repositories.Concrete
             }
 
         }
-        public List<Vacancy> GetHotVacanciesByCompanyName(string companyName)
+        public IList<Vacancy> GetHotVacanciesByCompanyName(string companyName)
         {
             int companyId = context.Companies.FirstOrDefault(x => x.Name.Contains(companyName)).Id;
 
@@ -137,6 +137,16 @@ namespace JobsMe.NewDAL.Repositories.Concrete
         public IList<Skill> GetSkillsByIds(IList<int> ids)
         {
             return context.Skills.Where(skill => ids.Contains(skill.Id)).ToList();
+        }
+
+        public IList<Skill> GetSkillsByNames(IList<string> names)
+        {
+            return context.Skills.Where(skill => names.Contains(skill.Name)).ToList();
+        }
+
+        public IList<Vacancy> GetActualVacancies(DateTime date)
+        {
+            return context.Vacancies.Where(v => v.AddDate >= date).ToList();
         }
     }
 }

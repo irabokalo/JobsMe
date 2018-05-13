@@ -19,5 +19,9 @@ namespace JobsMe.NewDAL.Repositories.Abstract
         LanguageLevel GetLanguageLevel(int levelId);
         Skill GetSkillByName(string name);
         IList<Skill> GetSkillsByIds(IList<int> ids);
+        IList<Skill> GetSkillsByNames(IList<string> names);
+        IList<Vacancy> GetVacanciesByCompanyName(string companyName);
+        IList<Vacancy> GetHotVacanciesByCompanyName(string companyName);
+        IList<Vacancy> GetActualVacancies(DateTime date);
     }
 }
