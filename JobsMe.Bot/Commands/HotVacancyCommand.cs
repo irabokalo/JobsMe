@@ -25,7 +25,7 @@ namespace JobsMe.Bot.Commands
                     message.Text.Substring(indexOfCompany + 1, message.Text.Length - indexOfCompany - 1);
 
                 Trace.TraceError("Searched Company: " + seachedCompany);
-                var companiesVacancies = repository.GetHotVacanciesByCompanyName(seachedCompany);
+                var companiesVacancies = analyzer.GetHotVacanciesByCompanyName(seachedCompany);
                 client.SendTextMessageAsync(chatId, companiesVacancies.FirstOrDefault()?.VacancyUrl,
                     replyToMessageId: messageId);
             }
