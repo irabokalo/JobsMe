@@ -24,6 +24,7 @@ namespace JobsMe.BotApp.Models
             commandsList.Add(new HelloCommand());
             commandsList.Add(new HotVacancyCommand());
             commandsList.Add(new CompanyCommand());
+            commandsList.Add(new RandomCommand());
             //TODO: Add more commands
 
             client = new TelegramBotClient(AppSettings.Key);

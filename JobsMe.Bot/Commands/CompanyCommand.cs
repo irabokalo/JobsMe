@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using System.Web.WebPages;
 using JobsMe.BotApp.Commands;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -24,12 +25,23 @@ namespace JobsMe.Bot.Commands
                 var seachedCompany = message.Text.Substring(indexOfCompany + 1, message.Text.Length - indexOfCompany - 1);
 
                 Trace.TraceInformation("Searched Company: " + seachedCompany);
-                var companiesVacancies = analyzer.GetVacanciesByCompanyName(seachedCompany);
-                client.SendTextMessageAsync(chatId,
-                    companiesVacancies.Count > 0
-                        ? companiesVacancies.FirstOrDefault()?.VacancyUrl
-                        : $"No hot vacancies in company: {seachedCompany}",
-                    replyToMessageId: messageId);
+                if (!seachedCompany.IsEmpty() && message.Text.Contains("_"))
+                {
+                    var companiesVacancies = analyzer.GetVacanciesByCompanyName(seachedCompany);
+                    client.SendTextMessageAsync(chatId,
+                        companiesVacancies.Count > 0
+                            ? companiesVacancies.FirstOrDefault()?.VacancyUrl
+                            : $"No vacancies in company: {seachedCompany}",
+                        replyToMessageId: messageId);
+                }
+                else
+                {
+                    client.SendTextMessageAsync(chatId,
+                        $"Please type a company name, after underscore, like this vacancyincompany_Eleks ",
+                        replyToMessageId: messageId);
+                }
+
+
             }
             catch (Exception e)
             {
