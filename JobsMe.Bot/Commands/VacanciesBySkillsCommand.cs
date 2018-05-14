@@ -1,9 +1,7 @@
 ﻿using JobsMe.BotApp.Commands;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Web;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
@@ -22,13 +20,29 @@ namespace JobsMe.Bot.Commands
             {
                 var indexOfSkills = message.Text.IndexOf("_", StringComparison.Ordinal);
                 var allSkills = message.Text.Substring(indexOfSkills + 1, message.Text.Length - indexOfSkills - 1);
-                var skillsStrings = allSkills.Split(',').ToList();
-                for (int i = 0; i < skillsStrings.Count; i++)
+
+                if (!string.IsNullOrEmpty(allSkills) && message.Text.Contains("_"))
                 {
-                    skillsStrings[i] = skillsStrings[i].Trim();
+                    var skillsStrings = allSkills.Split(',').ToList();
+                    for (int i = 0; i < skillsStrings.Count; i++)
+                    {
+                        skillsStrings[i] = skillsStrings[i].Trim();
+                    }
+                    var vacancies = analyzer.GetVacanciesBySkills(skillsStrings);
+
+                    var vacanciesToDisplay =
+                        vacancies.Count > 0
+                        ? string.Join(Environment.NewLine, vacancies.Select(x => x.VacancyUrl))
+                        : "There are no vacancies with such skills";
+
+                    client.SendTextMessageAsync(chatId, vacanciesToDisplay, replyToMessageId: messageId);
                 }
-                var vacancies = analyzer.GetVacanciesBySkills(skillsStrings);
-                var vacanciesToDisplay = string.Join(Environment.NewLine, vacancies.Select(x => x.VacancyUrl));
+                else
+                {
+                    client.SendTextMessageAsync(chatId,
+                        $"Please type your skills, after underscore, seperated by comma, like this vacanciesbyskills_OOP, JAVA ",
+                        replyToMessageId: messageId);
+                }
             }
             catch (Exception e)
             {

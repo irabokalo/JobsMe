@@ -43,8 +43,9 @@ namespace JobsParser
 
             for (int i = 1; i <= PAGES_COUNT; i++)
             {
-                var jobs = _dataService.GetAllJobs(_config.SearchRequestUrl, i).Result.Documents
-                                       .Where(job => DateTime.Today - job.AddDate.Date == TimeSpan.FromDays(1));
+                //TODO - uncomment
+                var jobs = _dataService.GetAllJobs(_config.SearchRequestUrl, i).Result.Documents;
+                                      // .Where(job => DateTime.Today - job.AddDate.Date == TimeSpan.FromDays(1));
                 allCompanies.AddRange(jobs.Select(job => job.CompanyName).Distinct().ToList());
                 jobIds.AddRange(jobs.Select(job => job.Id));
                 vacancies.AddRange(jobs);

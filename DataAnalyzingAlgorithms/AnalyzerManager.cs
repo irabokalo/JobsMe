@@ -30,7 +30,8 @@ namespace DataAnalyzingAlgorithms
         public IList<Vacancy> GetVacanciesBySkills(List<string> skillsNames)
         {
             var skills = repository.GetSkillsByNames(skillsNames);
-            var freshVacancies = repository.GetActualVacancies(DateTime.Today.AddDays(-3));
+            //TODO - set another time period
+            var freshVacancies = repository.GetActualVacancies(DateTime.Today.AddDays(-10));
             var analysisModels = new List<VacancySkillsAnalysisModel>();
 
             foreach (var vacancy in freshVacancies)
