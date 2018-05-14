@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
@@ -30,10 +31,22 @@ namespace JobsMe.Bot.Commands
                     }
                     var vacancies = analyzer.GetVacanciesBySkills(skillsStrings);
 
-                    var vacanciesToDisplay =
-                        vacancies.Count > 0
-                        ? string.Join(Environment.NewLine, vacancies.Select(x => x.VacancyUrl))
-                        : "There are no vacancies with such skills";
+                    string vacanciesToDisplay;
+                    if (vacancies.Count == 0)
+                    {
+                        vacanciesToDisplay = "There are no vacancies with such skills";
+                    }
+                    else
+                    {
+                        StringBuilder builder = new StringBuilder();
+                        for (int i = 0; i < vacancies.Count; i++)
+                        {
+                            builder.Append($"Vacancy #{i + 1} - {vacancies[i].Vacancy.VacancyUrl}" + Environment.NewLine);
+                            builder.Append($"Chance = {vacancies[i].Probability}%" + Environment.NewLine);
+                        }
+
+                        vacanciesToDisplay = builder.ToString();
+                    }
 
                     client.SendTextMessageAsync(chatId, vacanciesToDisplay, replyToMessageId: messageId);
                 }

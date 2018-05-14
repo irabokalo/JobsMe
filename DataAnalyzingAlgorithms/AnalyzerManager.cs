@@ -27,11 +27,12 @@ namespace DataAnalyzingAlgorithms
             return repository.GetRandomVacancy();
         }
 
-        public IList<Vacancy> GetVacanciesBySkills(List<string> skillsNames)
+        public IList<VacancySkillsAnalysisModel> GetVacanciesBySkills(List<string> skillsNames)
         {
             var skills = repository.GetSkillsByNames(skillsNames);
             //TODO - set another time period
-            var freshVacancies = repository.GetActualVacancies(DateTime.Today.AddDays(-10));
+            // var freshVacancies = repository.GetActualVacancies(DateTime.Today.AddDays(-30));
+            var freshVacancies = repository.GetVacancies();
             var analysisModels = new List<VacancySkillsAnalysisModel>();
 
             foreach (var vacancy in freshVacancies)
@@ -48,7 +49,7 @@ namespace DataAnalyzingAlgorithms
             }
 
             var result = analysisModels.OrderByDescending(x => x.Probability).Where(z=>z.Probability>0)
-                .Take(5).Select(y => y.Vacancy).ToList();
+                .Take(5).ToList();
             return result;
         }
 

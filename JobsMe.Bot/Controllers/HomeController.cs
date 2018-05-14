@@ -58,7 +58,7 @@ namespace JobsMe.BotApp.Controllers
             var command = new VacanciesBySkillsCommand();
             var msg = new Message()
             {
-                Text = "vacanciesbyskills_.net, scrum",
+                Text = "/vacanciesbyskills_JAVA",
                 MessageId=1,
                 Chat = new Chat()
             };
