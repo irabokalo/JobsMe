@@ -149,9 +149,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Commands\ChancesCommand.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CompanyCommand.cs" />
-    <Compile Include="Commands\GetRecommendedSkills.cs" />
+    <Compile Include="Commands\RecommendedSkillsCommand.cs" />
     <Compile Include="Commands\VacanciesBySkillsCommand.cs" />
     <Compile Include="Commands\HelloCommand.cs" />
     <Compile Include="Commands\HotVacancyCommand.cs" />
